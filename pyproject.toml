@@ -3,7 +3,9 @@ name = "McpServerTemplate"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
+requires-python = ">=3.10"
 dependencies = [
+    "cryptography>=40.0,<44.0.0",
     "mcp>=1.27.0",
     # 数据验证和设置管理
     "pydantic>=2.0.0",
@@ -22,6 +24,7 @@ McpServerTemplate = "McpServerTemplate:main"
 
 [tool.uv]
 dev-dependencies = [
+    "cryptography>=40.0,<44.0.0",
     "pytest>=8.3.3",
     "ruff>=0.7.3"
 ]
