@@ -2,5 +2,5 @@
   "name": "mcp-nodejs-template",
   "version": "1.0.0",
   "scripts": { "tsc": "tsc -p tsconfig.json" },
-  "dependencies": { "express": "^4.0.0" }
+  "dependencies": { "@eggjs/tegg": "^3.0.0" }
 }
