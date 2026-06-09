@@ -4,11 +4,11 @@ from typing import Annotated, Any, Dict, List, Optional
 
 import httpx
 from pydantic import BaseModel, Field, field_validator
-# removed FastMCP import
+from mcp.server import FastMCP
 from mcp.server.fastmcp.server import Context
 from mcp.types import TextContent
 
-# removed FastMCP instance
+server = FastMCP("utility-tools")
 
 
 # ==================== Pydantic 数据校验工具（最简示例） ====================
@@ -27,7 +27,7 @@ class UserInfo(BaseModel):
         return v
 
 
-@server.tool()
+@disabled_tool()
 async def validate_user_data(
     name: Annotated[str, Field(description="用户名（长度1-50）")],
     age: Annotated[int, Field(ge=0, le=150, description="年龄（0-150）")],
@@ -56,7 +56,7 @@ class ValidateUserDataV2Output(BaseModel):
     email: str = Field(description="邮箱地址")
 
 
-@server.tool()
+@disabled_tool()
 async def validate_user_data_v2(
     name: Annotated[str, Field(min_length=1, max_length=50, description="用户名（长度1-50）")],
     age: Annotated[int, Field(ge=0, le=150, description="年龄（0-150）")],
@@ -73,7 +73,7 @@ async def validate_user_data_v2(
 
 # ==================== 环境变量调试工具 ====================
 
-@server.tool()
+@disabled_tool()
 async def get_env_configs() -> Dict[str, str]:
     """获取平台注入的环境变量配置（调试用）"""
     return {
@@ -136,7 +136,7 @@ class AnalyzeDataPipelineInput(BaseModel):
     tags: Optional[List[str]] = Field(default=None, description="标签列表")
 
 
-@server.tool()
+@disabled_tool()
 async def analyze_data_pipeline(pipeline: AnalyzeDataPipelineInput) -> Dict[str, Any]:
     """分析数据管道配置，校验数据源、转换步骤和调度策略的完整性
 
@@ -181,7 +181,7 @@ async def analyze_data_pipeline(pipeline: AnalyzeDataPipelineInput) -> Dict[str,
 
 # ==================== 请求 Header 读取工具 ====================
 
-@server.tool()
+@disabled_tool()
 async def get_request_headers(ctx: Context) -> Dict[str, Any]:
     """获取当前 MCP 请求的 HTTP Header 信息
 
@@ -215,7 +215,7 @@ async def get_request_headers(ctx: Context) -> Dict[str, Any]:
 
 # ==================== 外部 API 调用工具 ====================
 
-@server.tool()
+@disabled_tool()
 async def fetch_jsonplaceholder(
     resource: Annotated[str, Field(description="资源类型，可选值: posts, comments, albums, photos, todos, users")] = "posts",
     resource_id: Annotated[Optional[str], Field(description="资源ID，为空则获取列表，指定则获取单条")] = None,
