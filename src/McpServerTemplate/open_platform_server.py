@@ -1,4 +1,3 @@
-from McpServerTemplate.core import engine
 import os
 import json
 from typing import Annotated, Any, Dict, List, Optional
