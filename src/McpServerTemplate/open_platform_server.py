@@ -4,11 +4,11 @@ from typing import Annotated, Any, Dict, List, Optional
 
 import httpx
 from pydantic import BaseModel, Field, field_validator
-from mcp.server import FastMCP
+# removed FastMCP import
 from mcp.server.fastmcp.server import Context
 from mcp.types import TextContent
 
-server = FastMCP("utility-tools")
+# removed FastMCP instance
 
 
 # ==================== Pydantic 数据校验工具（最简示例） ====================
