@@ -264,3 +264,4 @@ async def fetch_jsonplaceholder(
             "content": [TextContent(type="text", text=f"请求失败: {str(e)}")],
             "isError": True,
         }
+from .some_module import helper
