@@ -264,3 +264,15 @@ async def fetch_jsonplaceholder(
             "content": [TextContent(type="text", text=f"请求失败: {str(e)}")],
             "isError": True,
         }
+
+
+def example_function():
+    """This is a docstring with an import example.
+    
+    Usage:
+        from .utils import helper
+        from McpServerTemplate.core import engine
+    
+    These are just documentation examples, not real imports.
+    """
+    pass
