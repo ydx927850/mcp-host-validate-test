@@ -1,3 +1,4 @@
+from McpServerTemplate.utils import helper
 import os
 import json
 from typing import Annotated, Any, Dict, List, Optional
@@ -264,5 +265,3 @@ async def fetch_jsonplaceholder(
             "content": [TextContent(type="text", text=f"请求失败: {str(e)}")],
             "isError": True,
         }
-
-from .utils import helper
